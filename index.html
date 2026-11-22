@@ -1,0 +1,439 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PROJECT LA</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="PROJECT LA is an author's music project founded in Yerevan in 2015 by Levon Arevshatyan (LA): original songs written to the poems of Teryan, Charents, Sevak, Poe, Byron and Dickinson.">
+<meta property="og:title" content="PROJECT LA">
+<meta property="og:description" content="Poems set to music. Yerevan, since 2015.">
+<meta property="og:type" content="music.musician">
+<meta property="og:url" content="https://project.la/">
+<meta property="og:image" content="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/PROJECT_LA.jpg/960px-PROJECT_LA.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Armenian:wght@400;500;600&family=Noto+Serif+Armenian:wdth,wght@62.5..100,400..900&display=swap">
+<style>
+/* Layout: a night-concert programme. Left-aligned column, a tall condensed serif for names
+   and titles, one apricot accent, long lists set as running lines instead of cards. */
+:root {
+  --night: #101b3a;        /* ground: Yerevan night blue */
+  --night-2: #18264d;      /* raised band */
+  --line: #2d3d6b;         /* rules and borders */
+  --moon: #e9ecf7;         /* primary text */
+  --haze: #a3aed0;         /* secondary text */
+  --apricot: #f2a45c;      /* accent */
+  --on-apricot: #1a1508;   /* text on accent */
+  --display: "Noto Serif Armenian", "Sylfaen", Georgia, "Times New Roman", serif;
+  --body: "Noto Sans Armenian", "Segoe UI", system-ui, -apple-system, Arial, sans-serif;
+  color-scheme: dark;
+}
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) {
+    --night: #eef1f9; --night-2: #e1e6f4; --line: #c3cbe2; --moon: #131c3b;
+    --haze: #4c587e; --apricot: #b65a12; --on-apricot: #fff8ef; color-scheme: light;
+  }
+}
+:root[data-theme="light"] {
+  --night: #eef1f9; --night-2: #e1e6f4; --line: #c3cbe2; --moon: #131c3b;
+  --haze: #4c587e; --apricot: #b65a12; --on-apricot: #fff8ef; color-scheme: light;
+}
+
+* { box-sizing: border-box; }
+body {
+  margin: 0; background: var(--night); color: var(--moon);
+  font-family: var(--body); font-size: 1.0625rem; line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+:root[data-lang="hy"] .en { display: none; }
+:root:not([data-lang="hy"]) .hy { display: none; }
+
+.wrap {
+  max-width: 68rem; margin-inline: auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+a { color: inherit; }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--apricot); outline-offset: 3px; }
+h1, h2, h3 { font-family: var(--display); font-stretch: 70%; font-weight: 800; line-height: 1.05; margin: 0; text-wrap: balance; }
+h2 { font-size: clamp(2rem, 5vw, 3rem); }
+p { margin: 0; }
+.label {
+  font-size: .78rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--apricot);
+}
+
+/* top bar */
+.top { display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding-block: 1.1rem; }
+.mark { font-family: var(--display); font-stretch: 70%; font-weight: 800; letter-spacing: .04em; text-decoration: none; font-size: 1.15rem; }
+.mark b, h1 b { color: var(--apricot); font-weight: inherit; }
+.lang { display: flex; border: 1px solid var(--line); border-radius: 999px; overflow: hidden; }
+.lang button {
+  font: 600 .82rem var(--body); letter-spacing: .06em; color: var(--haze);
+  background: none; border: 0; padding: .4rem .9rem; cursor: pointer;
+}
+.lang button[aria-pressed="true"] { background: var(--apricot); color: var(--on-apricot); }
+
+/* hero */
+.hero { display: flex; flex-wrap: wrap; align-items: center; gap: 2.5rem 3.5rem; padding-block: 2rem 4rem; }
+.hero-text { flex: 1 1 22rem; min-width: 0; display: flex; flex-direction: column; gap: 1.4rem; align-items: flex-start; }
+h1 { font-size: clamp(4rem, 15vw, 9.5rem); font-stretch: 62.5%; font-weight: 900; line-height: .86; letter-spacing: -.01em; }
+.tagline { font-family: var(--display); font-stretch: 80%; font-style: normal; font-size: clamp(1.4rem, 3.2vw, 2rem); line-height: 1.2; }
+.lead { color: var(--haze); max-width: 34rem; }
+.hero figure { flex: 0 1 24rem; margin: 0; min-width: 0; }
+.hero img { display: block; width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 4px; }
+figcaption { font-size: .78rem; color: var(--haze); margin-top: .6rem; }
+
+.listen { display: flex; flex-wrap: wrap; gap: .6rem; }
+.listen a {
+  text-decoration: none; font-weight: 600; font-size: .95rem; padding: .7rem 1.15rem;
+  border: 1px solid var(--line); border-radius: 999px; transition: border-color .15s, background .15s, color .15s;
+}
+.listen a:first-child, .listen a:hover { background: var(--apricot); border-color: var(--apricot); color: var(--on-apricot); }
+.award { font-size: .92rem; color: var(--haze); border-left: 2px solid var(--apricot); padding-left: .9rem; max-width: 30rem; }
+.award strong { color: var(--moon); font-weight: 600; }
+
+/* facts line */
+.facts { border-block: 1px solid var(--line); }
+.facts dl { margin: 0; display: flex; flex-wrap: wrap; gap: 1.2rem 3.5rem; padding-block: 1.6rem; }
+.facts div { display: flex; flex-direction: column-reverse; }
+.facts dd { margin: 0; font-family: var(--display); font-stretch: 70%; font-weight: 800; font-size: 2.4rem; line-height: 1; font-variant-numeric: tabular-nums; }
+.facts dt { font-size: .85rem; color: var(--haze); margin-top: .35rem; }
+
+section { padding-block: 4.5rem 0; }
+.head { display: flex; flex-direction: column; gap: .5rem; margin-bottom: 2rem; }
+.prose { display: flex; flex-direction: column; gap: 1.1rem; max-width: 40rem; }
+.prose em { font-family: var(--display); font-style: italic; }
+
+/* poets */
+.poets { background: var(--night-2); margin-top: 4.5rem; padding-block: 4rem; }
+.poets ul {
+  list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: .1em .55em;
+  font-family: var(--display); font-stretch: 62.5%; font-weight: 800; line-height: 1.12;
+  font-size: clamp(1.9rem, 6.2vw, 4.2rem);
+}
+.poets li:nth-child(3n+2) { color: var(--apricot); }
+.poets li:not(:last-child)::after { content: "·"; margin-left: .55em; color: var(--haze); }
+.poets p { color: var(--haze); max-width: 40rem; margin-top: 1.8rem; }
+
+/* videos */
+.videos { display: grid; grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr)); gap: 1.8rem 1.4rem; }
+.videos a { text-decoration: none; display: flex; flex-direction: column; gap: .7rem; min-width: 0; border-top: 1px solid var(--line); padding-top: .9rem; }
+.videos img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 4px; display: block; }
+.videos h3 { font-size: 1.45rem; font-stretch: 75%; }
+.videos span { font-size: .9rem; color: var(--haze); }
+.videos a:hover h3 { color: var(--apricot); }
+.more { margin-top: 2rem; }
+.more a { color: var(--apricot); font-weight: 600; text-underline-offset: 4px; }
+
+/* setlist */
+.setlist { list-style: none; margin: 0; padding: 0; columns: 2 18rem; column-gap: 3rem; }
+.setlist li { break-inside: avoid; padding: .7rem 0; border-bottom: 1px solid var(--line); display: flex; flex-direction: column; }
+.setlist b { font-family: var(--display); font-stretch: 78%; font-weight: 700; font-size: 1.3rem; line-height: 1.25; }
+.setlist span { font-size: .88rem; color: var(--haze); }
+
+/* timeline */
+.timeline { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; }
+.timeline li { display: grid; grid-template-columns: 5.5rem 1fr; gap: 1.2rem; padding: 1.1rem 0; border-top: 1px solid var(--line); }
+.timeline time { font-family: var(--display); font-stretch: 65%; font-weight: 800; font-size: 1.9rem; line-height: 1; color: var(--apricot); font-variant-numeric: tabular-nums; }
+.timeline p { max-width: 40rem; min-width: 0; }
+
+/* people */
+.people { display: grid; grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr)); gap: 2.5rem 3rem; }
+.people h3 { font-size: 1.5rem; margin-bottom: .9rem; }
+.people dl { margin: 0; display: grid; gap: .65rem; }
+.people dt { font-size: .78rem; letter-spacing: .1em; text-transform: uppercase; color: var(--haze); }
+.people dd { margin: 0; }
+.people p { color: var(--moon); }
+
+footer { margin-top: 5rem; border-top: 1px solid var(--line); padding-block: 2.2rem 3rem; font-size: .88rem; color: var(--haze); }
+footer .wrap { display: flex; flex-direction: column; gap: 1rem; }
+footer nav { display: flex; flex-wrap: wrap; gap: .4rem 1.4rem; }
+footer nav a { color: var(--moon); font-weight: 600; text-underline-offset: 4px; }
+
+@media (max-width: 30rem) {
+  .timeline li { grid-template-columns: 1fr; gap: .4rem; }
+  section { padding-block: 3.5rem 0; }
+}
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+
+<header class="wrap top">
+  <a class="mark" href="#top">PROJECT <b>LA</b></a>
+  <div class="lang" role="group" aria-label="Language">
+    <button type="button" id="lang-en" data-set="en" aria-pressed="true">EN</button>
+    <button type="button" id="lang-hy" data-set="hy" aria-pressed="false">ՀԱՅ</button>
+  </div>
+</header>
+
+<main id="top">
+  <div class="wrap hero">
+    <div class="hero-text">
+      <h1>PROJECT <b>LA</b></h1>
+      <p class="tagline"><span class="en">Poems set to music.</span><span class="hy">Պոեզիա՝ երաժշտության լեզվով։</span></p>
+      <p class="lead">
+        <span class="en">An author's music project founded in Yerevan in 2015 by Levon Arevshatyan, the LA of the name. Every song is his own, written to the verse of Teryan, Charents and Sevak, of Poe, Byron and Dickinson.</span>
+        <span class="hy">Հեղինակային երաժշտական նախագիծ՝ հիմնադրված 2015 թվականին Երևանում Լևոն Արևշատյանի (LA) կողմից։ Բոլոր երգերը նրա հեղինակությամբ են՝ գրված Տերյանի, Չարենցի և Սևակի, Պոյի, Բայրոնի և Դիքինսոնի տողերի հիման վրա։</span>
+      </p>
+      <nav class="listen" aria-label="Listen">
+        <a href="https://open.spotify.com/artist/3WJI20LyXn8BVnRvzndYCj" target="_blank" rel="noopener">Spotify</a>
+        <a href="https://music.apple.com/am/artist/project-la/1027572444" target="_blank" rel="noopener">Apple Music</a>
+        <a href="https://www.youtube.com/@PROJECTLA" target="_blank" rel="noopener">YouTube</a>
+        <a href="https://music.youtube.com/channel/UC7z8L-dQg6w0f5E1zrf0WBQ" target="_blank" rel="noopener">YouTube Music</a>
+      </nav>
+      <p class="award">
+        <span class="en"><strong>Best Group-Project of the Year</strong>, awarded by the Armenian Music Academy on 30 April 2025.</span>
+        <span class="hy"><strong>«Տարվա լավագույն խումբ-նախագիծ»</strong>՝ Հայկական երաժշտական ակադեմիայի մրցանակաբաշխություն, 30 ապրիլի 2025 թ.։</span>
+      </p>
+    </div>
+    <figure>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/PROJECT_LA.jpg/960px-PROJECT_LA.jpg" width="960" height="960"
+           alt="Levon Arevshatyan and Gor Sujyan" onerror="this.closest('figure').hidden=true">
+      <figcaption>
+        <span class="en">Founder Levon Arevshatyan and lead vocalist Gor Sujyan.</span><span class="hy">Նախագծի հեղինակ Լևոն Արևշատյանը և մենակատար Գոռ Սուջյանը։</span>
+        <a href="https://commons.wikimedia.org/wiki/File:PROJECT_LA.jpg" target="_blank" rel="noopener">Վահան Վխկրյան</a>,
+        <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0</a>
+      </figcaption>
+    </figure>
+  </div>
+
+  <div class="facts">
+    <dl class="wrap">
+      <div><dt><span class="en">founded in Yerevan</span><span class="hy">հիմնադրվել է Երևանում</span></dt><dd>2015</dd></div>
+      <div><dt><span class="en">albums released</span><span class="hy">թողարկված ալբոմ</span></dt><dd>9</dd></div>
+      <div><dt><span class="en">poems turned into songs</span><span class="hy">երգի վերածված բանաստեղծություն</span></dt><dd>90+</dd></div>
+      <div><dt><span class="en">composer of every song</span><span class="hy">բոլոր երգերի հեղինակ</span></dt><dd>1</dd></div>
+    </dl>
+  </div>
+
+  <section class="wrap" id="about">
+    <div class="head">
+      <p class="label"><span class="en">The project</span><span class="hy">Նախագիծը</span></p>
+      <h2><span class="en">One composer, many voices</span><span class="hy">Մեկ հեղինակ, բազում ձայներ</span></h2>
+    </div>
+    <div class="prose">
+      <p>
+        <span class="en">Levon Arevshatyan is an economist by profession. The repertoire of PROJECT LA consists only of his songs. It began with English-language poetry set to rock, and later moved through reggae, romance and urban folk.</span>
+        <span class="hy">Լևոն Արևշատյանը մասնագիտությամբ տնտեսագետ է։ PROJECT LA-ի երգացանկը բաղկացած է բացառապես նրա երգերից։ Սկզբում խումբը ներկայացնում էր անգլալեզու պոեզիա ռոք ժանրի մեղեդիներով, ավելի ուշ՝ ռեգի, ռոմանս և քաղաքային ֆոլկ։</span>
+      </p>
+      <p>
+        <span class="en">The first song was <em>A Dream Within a Dream</em>, on the poem by Edgar Allan Poe. The first song in Armenian came from Vahan Teryan's <em>Կարոտ</em> (Longing).</span>
+        <span class="hy">Նախագծի մեկնարկը տրվեց <em>A Dream Within a Dream</em> երգով՝ Էդգար Ալլան Պոյի բանաստեղծության հիման վրա։ Առաջին հայալեզու երգը գրվել է Վահան Տերյանի <em>«Կարոտ»</em> բանաստեղծության հիման վրա։</span>
+      </p>
+      <p>
+        <span class="en">Most songs are sung by Gor Sujyan. Producer Suren Sahakyan is also the artistic director, and directs the concerts, their light and sound, and the videos.</span>
+        <span class="hy">Երգերի մեծ մասը կատարում է Գոռ Սուջյանը։ Պրոդյուսեր Սուրեն Սահակյանը նաև նախագծի գեղարվեստական ղեկավարն է, լուսաձայնային ձևավորման, տեսանկարահանման և համերգների ռեժիսորը։</span>
+      </p>
+    </div>
+  </section>
+
+  <div class="poets" id="poets">
+    <div class="wrap">
+      <div class="head">
+        <p class="label"><span class="en">The poets</span><span class="hy">Բանաստեղծները</span></p>
+      </div>
+      <ul class="en">
+        <li>Vahan Teryan</li><li>Yeghishe Charents</li><li>Hamo Sahyan</li><li>Silva Kaputikyan</li><li>Paruyr Sevak</li>
+        <li>Misak Metsarents</li><li>Avet Barseghyan</li><li>Lord Byron</li><li>Emily Dickinson</li><li>Edgar Allan Poe</li>
+      </ul>
+      <ul class="hy">
+        <li>Վահան Տերյան</li><li>Եղիշե Չարենց</li><li>Համո Սահյան</li><li>Սիլվա Կապուտիկյան</li><li>Պարույր Սևակ</li>
+        <li>Միսաք Մեծարենց</li><li>Ավետ Բարսեղյան</li><li>Լորդ Բայրոն</li><li>Էմիլի Դիքինսոն</li><li>Էդգար Ալլան Պո</li>
+      </ul>
+      <p>
+        <span class="en">More than ninety poems by these and other authors, classic and contemporary, Armenian, English and American, have become PROJECT LA songs.</span>
+        <span class="hy">Այս և այլ հեղինակների՝ հայ, անգլիացի և ամերիկացի դասականների ու ժամանակակիցների ավելի քան ինը տասնյակ ստեղծագործություն դարձել է PROJECT LA-ի երգ։</span>
+      </p>
+    </div>
+  </div>
+
+  <section class="wrap" id="watch">
+    <div class="head">
+      <p class="label"><span class="en">Watch</span><span class="hy">Դիտել</span></p>
+      <h2><span class="en">Videos</span><span class="hy">Տեսահոլովակներ</span></h2>
+    </div>
+    <div class="videos">
+      <a href="https://www.youtube.com/watch?v=qs-bexZ69-A" target="_blank" rel="noopener">
+        <img src="https://i.ytimg.com/vi/qs-bexZ69-A/hqdefault.jpg" alt="" loading="lazy" onerror="this.remove()">
+        <h3>Պատահական անցորդին</h3><span>To a Stranger · <span class="en">poem by Yeghishe Charents</span><span class="hy">խոսք՝ Եղիշե Չարենցի</span></span>
+      </a>
+      <a href="https://www.youtube.com/watch?v=0EG-hRWQ04o" target="_blank" rel="noopener">
+        <img src="https://i.ytimg.com/vi/0EG-hRWQ04o/hqdefault.jpg" alt="" loading="lazy" onerror="this.remove()">
+        <h3>Ահա նորից գիշեր</h3><span>It's a Night, Again</span>
+      </a>
+      <a href="https://www.youtube.com/watch?v=N0plcuhjk10" target="_blank" rel="noopener">
+        <img src="https://i.ytimg.com/vi/N0plcuhjk10/hqdefault.jpg" alt="" loading="lazy" onerror="this.remove()">
+        <h3>Երկու ուրվական</h3><span>Two Ghosts</span>
+      </a>
+      <a href="https://www.youtube.com/watch?v=0fE3umVvm90" target="_blank" rel="noopener">
+        <img src="https://i.ytimg.com/vi/0fE3umVvm90/hqdefault.jpg" alt="" loading="lazy" onerror="this.remove()">
+        <h3>Չեմ ճանաչում ինքս ինձ</h3><span>I Don't Recognize Myself</span>
+      </a>
+      <a href="https://www.youtube.com/watch?v=brdEmknYFmY" target="_blank" rel="noopener">
+        <img src="https://i.ytimg.com/vi/brdEmknYFmY/hqdefault.jpg" alt="" loading="lazy" onerror="this.remove()">
+        <h3>Հոգնածություն</h3><span>Tiredness</span>
+      </a>
+      <a href="https://www.youtube.com/watch?v=YeFNBtrk2v4" target="_blank" rel="noopener">
+        <img src="https://i.ytimg.com/vi/YeFNBtrk2v4/hqdefault.jpg" alt="" loading="lazy" onerror="this.remove()">
+        <h3>Ինձ բացակա չդնեք</h3><span>Don't Mark Me Absent</span>
+      </a>
+    </div>
+    <p class="more">
+      <a href="https://www.youtube.com/watch?v=5MEbdfR33vw" target="_blank" rel="noopener"><span class="en">The Best of PROJECT LA on YouTube</span><span class="hy">PROJECT LA-ի լավագույն երգերը YouTube-ում</span> →</a>
+    </p>
+  </section>
+
+  <section class="wrap" id="songs">
+    <div class="head">
+      <p class="label"><span class="en">At every concert</span><span class="hy">Բոլոր համերգներին</span></p>
+      <h2><span class="en">The songs that are always played</span><span class="hy">Երգեր, որ միշտ հնչում են</span></h2>
+    </div>
+    <ul class="setlist">
+      <li><b>Ո՞վ կհանդիպի</b><span><span class="en">Who Will Meet · poem by Yeghishe Charents · Song of the Year 2019</span><span class="hy">խոսք՝ Եղիշե Չարենցի · «Տարվա երգ» 2019</span></span></li>
+      <li><b>Փնտրում ես դու</b><span class="en">You Are Searching</span></li>
+      <li><b>Աշնան մեղեդի</b><span class="en">Autumn Melody</span></li>
+      <li><b>Երկու ուրվական</b><span class="en">Two Ghosts</span></li>
+      <li><b>Ահա նորից գիշեր</b><span class="en">It's a Night, Again</span></li>
+      <li><b>Խաղաղ գիշերով</b><span class="en">On a Quiet Night</span></li>
+      <li><b>Ռեքվիեմ</b><span><span class="en">Requiem · words by Avet Barseghyan</span><span class="hy">խոսք՝ Ավետ Բարսեղյանի</span></span></li>
+      <li><b>Ես այն եմ եղել</b><span class="en">I Have Been That</span></li>
+      <li><b>Լինես իմ երազում</b><span class="en">Be in My Dream</span></li>
+      <li><b>Eldorado</b></li>
+      <li><b>Does God Listen?</b></li>
+    </ul>
+  </section>
+
+  <section class="wrap" id="story">
+    <div class="head">
+      <p class="label"><span class="en">Since 2015</span><span class="hy">2015-ից ի վեր</span></p>
+      <h2><span class="en">The story so far</span><span class="hy">Պատմություն</span></h2>
+    </div>
+    <ol class="timeline">
+      <li><time>2015</time><p>
+        <span class="en">PROJECT LA is founded in Yerevan. The first concert, on 3 December at the Yans club, is a closed evening for friends.</span>
+        <span class="hy">PROJECT LA-ն հիմնադրվում է Երևանում։ Առաջին համերգը՝ դեկտեմբերի 3-ին «ՅԱՆՍ» ակումբում, փակ էր՝ ընկերների և ծանոթների համար։</span></p></li>
+      <li><time>2016</time><p>
+        <span class="en">The first album, <em>Imitation</em>, comes out with eight songs in English. A second closed concert follows on 7 June at the Karen Demirchyan Sports and Concert Complex.</span>
+        <span class="hy">Թողարկվում է առաջին ալբոմը՝ <em>Imitation</em>-ը՝ ութ անգլալեզու երգով։ Հունիսի 7-ին՝ երկրորդ փակ համերգը Կարեն Դեմիրճյանի անվան մարզահամերգային համալիրում։</span></p></li>
+      <li><time>2017</time><p>
+        <span class="en">The first album in Armenian: four songs on poems by Vahan Teryan, «Իրիկնաժամ», «Երբ կյանքը սուր փշերով», «Ցանկություն» and «Կարոտ».</span>
+        <span class="hy">Հայալեզու առաջին ալբոմը՝ չորս երգ Վահան Տերյանի բանաստեղծությունների հիման վրա՝ «Իրիկնաժամ», «Երբ կյանքը սուր փշերով», «Ցանկություն», «Կարոտ»։</span></p></li>
+      <li><time>2019</time><p>
+        <span class="en">The first public concert, on 15 June at the Karen Demirchyan Complex, sells out ten days ahead. «Ո՞վ կհանդիպի», on the poem by Charents, is named Song of the Year.</span>
+        <span class="hy">Առաջին բաց համերգը՝ հունիսի 15-ին Կարեն Դեմիրճյանի անվան համալիրում. բոլոր տոմսերը վաճառվել էին տասը օր առաջ։ Չարենցի խոսքերով «Ո՞վ կհանդիպի»-ն արժանանում է «Տարվա երգ» մրցանակին։</span></p></li>
+      <li><time>2020</time><p>
+        <span class="en">One new album and eleven music videos.</span>
+        <span class="hy">Մեկ նոր ալբոմ և տասնմեկ տեսահոլովակ։</span></p></li>
+      <li><time>2021</time><p>
+        <span class="en"><em>Requiem</em>, with words by Avet Barseghyan, is released in memory of those who fell in the forty-four-day war. On 5 June the band plays Gyumri, its first concert outside Yerevan; tickets go as soon as it is announced.</span>
+        <span class="hy">Քառասունչորսօրյա պատերազմի նահատակների հիշատակին թողարկվում է <em>«Ռեքվիեմ»</em>-ը՝ Ավետ Բարսեղյանի խոսքերով։ Հունիսի 5-ին՝ առաջին համերգը Երևանից դուրս՝ Գյումրիում. տոմսերը սպառվել էին հայտարարությունից անմիջապես հետո։</span></p></li>
+      <li><time>2025</time><p>
+        <span class="en">The Armenian Music Academy names PROJECT LA Best Group-Project of the Year.</span>
+        <span class="hy">Հայկական երաժշտական ակադեմիան PROJECT LA-ն ճանաչում է «Տարվա լավագույն խումբ-նախագիծ»։</span></p></li>
+    </ol>
+  </section>
+
+  <section class="wrap" id="people">
+    <div class="head">
+      <p class="label"><span class="en">On stage and behind it</span><span class="hy">Բեմում և բեմից դուրս</span></p>
+      <h2><span class="en">The people</span><span class="hy">Կազմը</span></h2>
+    </div>
+    <div class="people">
+      <div>
+        <h3><span class="en">Creative team</span><span class="hy">Ստեղծագործական խումբ</span></h3>
+        <dl class="en">
+          <div><dt>Founder, composer</dt><dd>Levon Arevshatyan (LA)</dd></div>
+          <div><dt>Producer, artistic director</dt><dd>Suren Sahakyan</dd></div>
+          <div><dt>Arrangers</dt><dd>Khachik Sahakyan, Hayk Gasparyan; also Armen Martirosyan, Edgar Hayrapetyan, Vahram Yanikyan</dd></div>
+          <div><dt>Lead vocal</dt><dd>Gor Sujyan</dd></div>
+          <div><dt>Guest soloists</dt><dd>Roland Gasparyan, Narine Dovlatyan, Jivan Khachatryan, Sona Shiroyan, Taron Muradyan, Arman Lazaryan, Tigran Kakhvejyan, Samvel Azatyan, Syuzi Melkonyan, Diana Gasparyan, Srbuk, Robin Fate</dd></div>
+        </dl>
+        <dl class="hy">
+          <div><dt>Հիմնադիր, երգերի հեղինակ</dt><dd>Լևոն Արևշատյան (LA)</dd></div>
+          <div><dt>Պրոդյուսեր, գեղարվեստական ղեկավար</dt><dd>Սուրեն Սահակյան</dd></div>
+          <div><dt>Գործիքավորողներ</dt><dd>Խաչիկ Սահակյան, Հայկ Գասպարյան, նաև՝ Արմեն Մարտիրոսյան, Էդգար Հայրապետյան, Վահրամ Յանիկյան</dd></div>
+          <div><dt>Մենակատար</dt><dd>Գոռ Սուջյան</dd></div>
+          <div><dt>Հրավիրյալ մենակատարներ</dt><dd>Ռոլանդ Գասպարյան, Նարինե Դովլաթյան, Ջիվան Խաչատրյան, Սոնա Շիրոյան, Տարոն Մուրադյան, Արման Լազարյան, Տիգրան Քախվեջյան, Սամվել Ազատյան, Սյուզի Մելքոնյան, Դիանա Գասպարյան, Սրբուկ, Robin Fate</dd></div>
+        </dl>
+      </div>
+      <div>
+        <h3><span class="en">The band</span><span class="hy">Երաժիշտները</span></h3>
+        <dl class="en">
+          <div><dt>Piano</dt><dd>Khachik Sahakyan</dd></div>
+          <div><dt>Guitar</dt><dd>Artur Soghoyan</dd></div>
+          <div><dt>Bass</dt><dd>Vardan Arakelyan</dd></div>
+          <div><dt>Drums</dt><dd>Arman Jalalyan, Tigran Sanoyan, Hakob Ordakyan</dd></div>
+          <div><dt>Percussion</dt><dd>Eduard Harutyunyan, Roman Shahinyan</dd></div>
+          <div><dt>Cello</dt><dd>Levon Arakelyan</dd></div>
+          <div><dt>Violin</dt><dd>Ashot Khoyetsyan, Razmik Hovhannisyan</dd></div>
+          <div><dt>Backing vocals</dt><dd>Sona Shiroyan, Ani Sahakyan, Tehmine Arabachyan</dd></div>
+        </dl>
+        <dl class="hy">
+          <div><dt>Դաշնամուր</dt><dd>Խաչիկ Սահակյան</dd></div>
+          <div><dt>Կիթառ</dt><dd>Արթուր Սողոյան</dd></div>
+          <div><dt>Բաս կիթառ</dt><dd>Վարդան Առաքելյան</dd></div>
+          <div><dt>Թմբուկներ</dt><dd>Արման Ջալալյան, Տիգրան Սանոյան, Հակոբ Օրդակյան</dd></div>
+          <div><dt>Պերկուսիա</dt><dd>Էդուարդ Հարությունյան, Ռոման Շահինյան</dd></div>
+          <div><dt>Թավջութակ</dt><dd>Լևոն Առաքելյան</dd></div>
+          <div><dt>Ջութակ</dt><dd>Աշոտ Խոյեցյան, Ռազմիկ Հովհաննիսյան</dd></div>
+          <div><dt>Բեք վոկալ</dt><dd>Սոնա Շիրոյան, Անի Սահակյան, Թեհմինե Արաբաչյան</dd></div>
+        </dl>
+      </div>
+      <div>
+        <h3><span class="en">Guest musicians</span><span class="hy">Հրավիրյալ երաժիշտներ</span></h3>
+        <dl class="en">
+          <div><dt>Accordion</dt><dd>Boris Yeganyan</dd></div>
+          <div><dt>Oud</dt><dd>Mariam Mirzoyan</dd></div>
+          <div><dt>Flute</dt><dd>Vahan Vkhkryan</dd></div>
+          <div><dt>Kanun</dt><dd>Kristine Yengoyan</dd></div>
+          <div><dt>Saxophone</dt><dd>Movses Babajanyan, Davit Melkonyan</dd></div>
+          <div><dt>Trumpet</dt><dd>Davit Tadevosyan</dd></div>
+        </dl>
+        <dl class="hy">
+          <div><dt>Ակորդեոն</dt><dd>Բորիս Եգանյան</dd></div>
+          <div><dt>Ուդ</dt><dd>Մարիամ Միրզոյան</dd></div>
+          <div><dt>Ֆլեյտա</dt><dd>Վահան Վխկրյան</dd></div>
+          <div><dt>Քանոն</dt><dd>Քրիստինե Ենգոյան</dd></div>
+          <div><dt>Սաքսոֆոն</dt><dd>Մովսես Բաբաջանյան, Դավիթ Մելքոնյան</dd></div>
+          <div><dt>Շեփոր</dt><dd>Դավիթ Թադևոսյան</dd></div>
+        </dl>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <nav aria-label="PROJECT LA online">
+      <a href="https://open.spotify.com/artist/3WJI20LyXn8BVnRvzndYCj" target="_blank" rel="noopener">Spotify</a>
+      <a href="https://music.apple.com/am/artist/project-la/1027572444" target="_blank" rel="noopener">Apple Music</a>
+      <a href="https://www.youtube.com/@PROJECTLA" target="_blank" rel="noopener">YouTube</a>
+      <a href="https://music.youtube.com/channel/UC7z8L-dQg6w0f5E1zrf0WBQ" target="_blank" rel="noopener">YouTube Music</a>
+      <a href="https://music.yandex.com/artist/3870754" target="_blank" rel="noopener">Yandex Music</a>
+      <a href="https://www.facebook.com/projectlaofficial" target="_blank" rel="noopener">Facebook</a>
+      <a href="https://instagram.com/projectlaofficial" target="_blank" rel="noopener">Instagram</a>
+    </nav>
+    <p>
+      <span class="en">Text based on the <a href="https://hy.wikipedia.org/wiki/PROJECT_LA" target="_blank" rel="noopener">Armenian Wikipedia article on PROJECT LA</a> (CC BY-SA 4.0).</span>
+      <span class="hy">Տեքստի հիմքում <a href="https://hy.wikipedia.org/wiki/PROJECT_LA" target="_blank" rel="noopener">Վիքիպեդիայի «PROJECT LA» հոդվածն</a> է (CC BY-SA 4.0)։</span>
+      © PROJECT LA
+    </p>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var root = document.documentElement, buttons = document.querySelectorAll(".lang button");
+  function set(lang, save) {
+    root.setAttribute("data-lang", lang);
+    root.setAttribute("lang", lang);
+    buttons.forEach(function (b) { b.setAttribute("aria-pressed", String(b.dataset.set === lang)); });
+    if (save) { try { localStorage.setItem("pla-lang", lang); } catch (e) {} }
+  }
+  var saved = null;
+  try { saved = localStorage.getItem("pla-lang"); } catch (e) {}
+  set(saved || ((navigator.language || "").toLowerCase().indexOf("hy") === 0 ? "hy" : "en"), false);
+  buttons.forEach(function (b) { b.addEventListener("click", function () { set(b.dataset.set, true); }); });
+})();
+</script>
+</html>
